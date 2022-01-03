@@ -1,0 +1,90 @@
+source:
+  reference: C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_001.obj
+  poses:
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_002.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_003.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_004.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_005.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_006.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_007.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_008.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_009.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_010.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_011.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_012.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_013.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_014.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_015.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_016.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_017.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_018.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_019.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_020.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_021.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_022.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_023.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_024.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_025.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_026.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_027.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_028.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_029.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_030.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_031.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_032.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_033.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_034.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_035.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_036.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_037.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_038.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_039.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_040.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_041.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_042.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_043.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_044.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_045.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_046.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_047.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_048.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_049.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_050.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_051.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_052.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_053.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_054.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_055.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_056.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_057.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_058.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_059.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_060.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_061.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_062.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_063.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_064.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_065.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_066.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_067.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_068.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_069.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_070.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_071.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_072.obj
+
+target:
+  reference: C:/Users/Enzo.Magal/Documents/Enzo2021/VidTIMIT/results/source_obj/face_001.obj
+  # Target poses just for reference
+  poses:
+
+markers:
+  - "160:160"
+  - "383:383"
+  - "180:180"
+  - "285:285"
+  - "371:371"
+  - "353:353"
+  - "354:354"
+  - "37:37"
+  - "241:241"
