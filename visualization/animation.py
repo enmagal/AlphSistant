@@ -1,6 +1,7 @@
 import glob
 from plotly.graph_objs import Figure
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 from meshlib import Mesh
 from render.plot import BrowserVisualizer
@@ -17,8 +18,8 @@ def animate(vert_path, face_path):
     fig.show(renderer="browser")
 
 def make_animation(mesh_list):
-    mesh_kwargs = dict(
-        color='#ccc',
+    mesh_kwargs1 = dict(
+        color='#003049',
         opacity=1.0,
         flatshading=True,
         lighting=dict(
@@ -35,8 +36,32 @@ def make_animation(mesh_list):
             z=5000
         )
     )
-    fig = Figure(
-        data=[BrowserVisualizer.make_mesh(mesh_list[0], **mesh_kwargs)],
+
+    mesh_kwargs2 = dict(
+        color='#D62828',
+        opacity=1.0,
+        flatshading=True,
+        lighting=dict(
+            ambient=0.1,
+            diffuse=1.0,
+            facenormalsepsilon=0.0000000000001,
+            roughness=0.3,
+            specular=0.7,
+            fresnel=0.001
+        ),
+        lightposition=dict(
+            x=-10000,
+            y=10000,
+            z=5000
+        )
+    )
+
+    fig = make_subplots(
+    rows=1, cols=2, subplot_titles=('Prédiction', 'Retargeting'),
+    specs=[[{'type': 'surface'}, {'type': 'surface'}]])
+
+    fig1 = Figure(
+        data=[BrowserVisualizer.make_mesh(mesh_list[0], **mesh_kwargs1)],
         layout=dict(
             updatemenus=[
                 dict(type="buttons",
@@ -54,8 +79,49 @@ def make_animation(mesh_list):
                      ])
             ],
         ),
-        frames=[go.Frame(data=[BrowserVisualizer.make_mesh(mesh_list[i], **mesh_kwargs)]) for i in range(len(mesh_list))]
+        frames=[go.Frame(data=[BrowserVisualizer.make_mesh(mesh_list[i], **mesh_kwargs1)]) for i in range(len(mesh_list))]
     )
+
+    fig2 = Figure(
+        data=[BrowserVisualizer.make_mesh(mesh_list[0], **mesh_kwargs2)],
+        layout=dict(
+            updatemenus=[
+                dict(type="buttons",
+                     buttons=[
+                         dict(
+                             label="Play",
+                             method="animate",
+                             args=[None, {
+                                 "mode": "afterall",
+                                 "frame": {"duration": 40, "redraw": True},
+                                 "fromcurrent": False,
+                                 "transition": {"duration": 40, "easing": "linear", "ordering": "traces first"}
+                             }]
+                         )
+                     ])
+            ],
+        ),
+        frames=[go.Frame(data=[BrowserVisualizer.make_mesh(mesh_list[i], **mesh_kwargs2)]) for i in range(len(mesh_list))]
+    )
+
+    fig.append_trace(fig1['data'][0], 1, 1)
+    fig.append_trace(fig2['data'][0], 1, 2)
+
+    frames=[go.Frame(data=[BrowserVisualizer.make_mesh(mesh_list[i], **mesh_kwargs1),
+                            BrowserVisualizer.make_mesh(mesh_list[i], **mesh_kwargs2)])
+                             for i in range(len(mesh_list))]
+    fig.frames=frames
+    button = dict(
+                 label='Play',
+                 method='animate',
+                 args=[None, {
+                                 "mode": "afterall",
+                                 "frame": {"duration": 40, "redraw": True},
+                                 "fromcurrent": False,
+                                 "transition": {"duration": 40, "easing": "linear", "ordering": "traces first"}
+                             }])
+    fig.update_layout(updatemenus=[dict(type='buttons', buttons=[button])])
+
     camera = dict(
         up=dict(x=0, y=1, z=0)
     )

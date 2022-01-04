@@ -14,13 +14,13 @@ import phoneme_detection as phde
 
 if __name__ == "__main__":
     face_path = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/alphsistant_face_tris.txt"
-    audio_path = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/model_creation/fadg0/audio/sa1.wav"
+    audio_path = "C:/Users/Enzo.Magal/Documents/Enzo2021/fadg0/audio/sa1.wav"
 
     df = phde.phoneme_csv_creation(audio_path)
     X = input_creation(df)
     print("Input created")
 
-    model = keras.models.load_model("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/models/model_animation.hdf5")
+    model = keras.models.load_model("C:/Users/Enzo.Magal/Documents/Enzo2021/models/model_animation.hdf5")
     y = model.predict(X)
     print("Output computed")
 

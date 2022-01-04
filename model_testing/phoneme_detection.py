@@ -108,7 +108,7 @@ def audioToLetters(model_path, audio_filename):
     return result_list
 
 def phoneme_csv_creation(audio):
-    model_path = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/model_testing/models/vosk-model-en-us-0.21"
+    model_path = "C:/Users/Enzo.Magal/Documents/Enzo2021/vosk-model-en-us-0.21"
 
     letter_list = audioToLetters(model_path, audio)
     index = list(range(len(letter_list)))
