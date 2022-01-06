@@ -38,7 +38,7 @@ class ModelConfig:
 
     def load_poses(self) -> Iterator[meshlib.Mesh]:
         for p in self.poses:
-            yield meshlib.Mesh.load(p)
+            yield meshlib.Mesh.load_txt(p, "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/alphsistant_face_tris.txt")
 
 
 class ConfigFile:
@@ -81,12 +81,12 @@ class ConfigFile:
 
     class Paths:
         class lowpoly:
-            catdog = "models/lowpoly/markers-cat-dog.yml"
-            catvoxel = "models/lowpoly/markers-cat-voxel.yml"
+            catdog = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/visualization/models/lowpoly/markers-cat-dog.yml"
+            catvoxel = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/visualization/models/lowpoly/markers-cat-voxel.yml"
 
         class highpoly:
-            cat_lion = "models/highpoly/markers-cat-lion.yml"
-            horse_camel = "models/highpoly/markers-horse-camel.yml"
+            cat_lion = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/visualization/models/highpoly/markers-cat-lion.yml"
+            horse_camel = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/visualization/models/highpoly/markers-horse-camel.yml"
 
 
 config_default = ConfigFile.load(ConfigFile.Paths.lowpoly.catdog)

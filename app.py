@@ -1,90 +1,58 @@
 import streamlit as st
 import time
 
+import sys
+import numpy as np
+import os
+from tensorflow import keras
 
+
+sys.path.append("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/visualization")
+from visualization.config import ConfigFile
+from animation import animate
+from meshlib import Mesh
+
+sys.path.append("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/model_testing")
+from model_test import input_creation, output_extraction
+import phoneme_detection as phde
 
 st.header("AlphSistant Demo")
 
-uploaded_file = st.file_uploader("Choose an audio file")
+st.sidebar.header('Fill in the data :')
+model_name = st.sidebar.selectbox(
+     'Which Model do you want to use ?',
+     ('Original Model', 'Shape Keys Model', 'Fancy Model'))
+
+uploaded_file = st.sidebar.file_uploader("Choose an audio file")
+
 if uploaded_file is not None:
+    if st.sidebar.button('Test the model') :
+        with st.spinner('Wait for it...'):
+            time.sleep(5)
+            face_path = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/alphsistant_face_tris.txt"
+            audio_path = "C:/Users/Enzo.Magal/Documents/Enzo2021/fadg0/audio/sa1.wav"
 
-    import sys
-    import numpy as np
-    import os
-    from tensorflow import keras
+            df = phde.phoneme_csv_creation(audio_path)
+            X = input_creation(df)
 
+        st.success("Input Created")
+        with st.spinner('Wait for it...'):
+            time.sleep(5)
+            model = torch.load('C:/Users/Enzo.Magal/Documents/Enzo2021/models/sk_model.pth')
+            y = model.predict(X)
 
-    sys.path.append("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/visualization")
-    from animation import animate
-    from meshlib import Mesh
+        st.success("Prediction Computed")
 
-    sys.path.append("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/model_testing")
-    from model_test import input_creation, output_extraction
-    import phoneme_detection as phde
+        with st.spinner('Wait for it...'):
+            time.sleep(5)
+            vert_path = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction"
+            files=os.listdir(vert_path)
+            for i in range(0,len(files)):
+                os.remove(vert_path+'/'+files[i])
+            output_extraction(y,vert_path)
 
-    # Add a placeholder
-    latest_iteration = st.empty()
-    bar = st.progress(0)
+        st.success("Output Extracted")
+        st.balloons()
 
-    for i in range(100):
-        # Update the progress bar with each iteration.
-        latest_iteration.text(f'Iteration {i+1}')
-        bar.progress(i + 1)
-        time.sleep(0.1)
-
-    st.success("Library Imported")
-
-    face_path = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/alphsistant_face_tris.txt"
-    audio_path = "C:/Users/Enzo.Magal/Documents/Enzo2021/fadg0/audio/sa1.wav"
-
-    df = phde.phoneme_csv_creation(audio_path)
-    X = input_creation(df)
-
-    # Add a placeholder
-    latest_iteration = st.empty()
-    bar = st.progress(0)
-
-    for i in range(100):
-        # Update the progress bar with each iteration.
-        latest_iteration.text(f'Iteration {i+1}')
-        bar.progress(i + 1)
-        time.sleep(0.1)
-
-    st.success("Input Created")
-
-    model = keras.models.load_model("C:/Users/Enzo.Magal/Documents/Enzo2021/models/model_animation.hdf5")
-    y = model.predict(X)
-    print("Output computed")
-
-    # Add a placeholder
-    latest_iteration = st.empty()
-    bar = st.progress(0)
-
-    for i in range(100):
-        # Update the progress bar with each iteration.
-        latest_iteration.text(f'Iteration {i+1}')
-        bar.progress(i + 1)
-        time.sleep(0.1)
-
-    st.success("Output Computed")
-
-    vert_path = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction"
-    files=os.listdir(vert_path)
-    for i in range(0,len(files)):
-        os.remove(vert_path+'/'+files[i])
-    output_extraction(y,vert_path)
-    print("Output extracted !")
-
-    # Add a placeholder
-    latest_iteration = st.empty()
-    bar = st.progress(0)
-
-    for i in range(100):
-        # Update the progress bar with each iteration.
-        latest_iteration.text(f'Iteration {i+1}')
-        bar.progress(i + 1)
-        time.sleep(0.1)
-
-    st.success("Output Extracted")
-
-    animate(vert_path, face_path)
+        cfg = ConfigFile.load("C:/Users/Enzo.Magal/Documents/Enzo2021/alphsistant_code/deformation_external/models/lowpoly/markers-cat-voxel.yml")
+        animate(vert_path, face_path, cfg)

@@ -5,6 +5,7 @@ from tensorflow import keras
 
 
 sys.path.append("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/visualization")
+from visualization.config import ConfigFile
 from animation import animate
 from meshlib import Mesh
 
@@ -31,4 +32,5 @@ if __name__ == "__main__":
     output_extraction(y,vert_path)
     print("Output extracted !")
 
-    animate(vert_path, face_path)
+    cfg = ConfigFile.load("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/fixed_map.yml")
+    animate(vert_path, face_path, cfg)

@@ -1,44 +1,46 @@
 import glob
+import sys
 from plotly.graph_objs import Figure
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
+sys.path.append("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/visualization")
+from visualization.config import ConfigFile
+from visualization.transformation import Transformation
+from visualization.correspondence import get_correspondence
 from meshlib import Mesh
 from render.plot import BrowserVisualizer
 from typing import Sequence
 
-def animate(vert_path, face_path):
+def animate(vert_path, face_path, cfg: ConfigFile, identity=False):
     targetPattern = "/*.txt"
     path_list = glob.glob(vert_path + targetPattern)
 
     mesh_list = []
     for i in range(len(path_list)):
         mesh_list.append(Mesh.load_txt(vert_file = path_list[i], face_file = face_path))
-    fig = make_animation(mesh_list)
+
+    corr_markers = cfg.markers  # List of vertex-tuples (source, target)
+    if identity:
+        corr_markers = np.ascontiguousarray(np.array((corr_markers[:, 0], corr_markers[:, 0]), dtype=np.int).T)
+
+    original_source = Mesh.load_obj(cfg.source.reference)
+    original_target = Mesh.load_obj(cfg.target.reference)
+    if identity:
+        original_target = Mesh.load_obj(cfg.source.reference)
+
+    mapping = get_correspondence(original_source, original_target, corr_markers)
+    transf = Transformation(original_source, original_target, mapping, smoothness=1)
+
+    fig = make_animation(transf, list(cfg.source.load_poses()), mesh_list)
     fig.show(renderer="browser")
 
-def make_animation(mesh_list):
-    mesh_kwargs1 = dict(
-        color='#003049',
-        opacity=1.0,
-        flatshading=True,
-        lighting=dict(
-            ambient=0.1,
-            diffuse=1.0,
-            facenormalsepsilon=0.0000000000001,
-            roughness=0.3,
-            specular=0.7,
-            fresnel=0.001
-        ),
-        lightposition=dict(
-            x=-10000,
-            y=10000,
-            z=5000
-        )
-    )
+def make_animation(transf: Transformation, poses: Sequence[Mesh], mesh_list):
+    assert poses
+    results = [transf(pose) for pose in poses]
 
-    mesh_kwargs2 = dict(
-        color='#D62828',
+    mesh_kwargs = dict(
+        color='#666',
         opacity=1.0,
         flatshading=True,
         lighting=dict(
@@ -61,7 +63,7 @@ def make_animation(mesh_list):
     specs=[[{'type': 'surface'}, {'type': 'surface'}]])
 
     fig1 = Figure(
-        data=[BrowserVisualizer.make_mesh(mesh_list[0], **mesh_kwargs1)],
+        data=[BrowserVisualizer.make_mesh(mesh_list[0], **mesh_kwargs)],
         layout=dict(
             updatemenus=[
                 dict(type="buttons",
@@ -79,11 +81,11 @@ def make_animation(mesh_list):
                      ])
             ],
         ),
-        frames=[go.Frame(data=[BrowserVisualizer.make_mesh(mesh_list[i], **mesh_kwargs1)]) for i in range(len(mesh_list))]
+        frames=[go.Frame(data=[BrowserVisualizer.make_mesh(mesh_list[i], **mesh_kwargs)]) for i in range(len(mesh_list))]
     )
 
     fig2 = Figure(
-        data=[BrowserVisualizer.make_mesh(mesh_list[0], **mesh_kwargs2)],
+        data=[BrowserVisualizer.make_mesh(results[0].transpose((0, 2, 1)), **mesh_kwargs)],
         layout=dict(
             updatemenus=[
                 dict(type="buttons",
@@ -101,15 +103,15 @@ def make_animation(mesh_list):
                      ])
             ],
         ),
-        frames=[go.Frame(data=[BrowserVisualizer.make_mesh(mesh_list[i], **mesh_kwargs2)]) for i in range(len(mesh_list))]
+        frames=[go.Frame(data=[BrowserVisualizer.make_mesh(p.transpose((0, 2, 1)), **mesh_kwargs)]) for p in results]
     )
 
     fig.append_trace(fig1['data'][0], 1, 1)
     fig.append_trace(fig2['data'][0], 1, 2)
 
-    frames=[go.Frame(data=[BrowserVisualizer.make_mesh(mesh_list[i], **mesh_kwargs1),
-                            BrowserVisualizer.make_mesh(mesh_list[i], **mesh_kwargs2)])
-                             for i in range(len(mesh_list))]
+    frames=[go.Frame(data=[BrowserVisualizer.make_mesh(mesh_list[i], **mesh_kwargs),
+                            BrowserVisualizer.make_mesh(results[i].transpose((0, 2, 1)), **mesh_kwargs)])
+                             for i in range(min(len(results), len(mesh_list)))]
     fig.frames=frames
     button = dict(
                  label='Play',

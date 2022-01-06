@@ -3,7 +3,7 @@ import tqdm
 from scipy import sparse
 
 import meshlib
-from config import ConfigFile
+from visualization.config import ConfigFile
 from correspondence import get_correspondence, compute_adjacent_by_edges, TransformMatrix
 
 

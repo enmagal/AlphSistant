@@ -19,7 +19,7 @@ import scipy.sparse.linalg as sparse_linalg
 from scipy.spatial import cKDTree
 
 import meshlib
-from config import ConfigFile
+from visualization.config import ConfigFile
 from render.plot import MeshPlots
 from meshlib.cache import SparseMatrixCache, CorrespondenceCache
 
