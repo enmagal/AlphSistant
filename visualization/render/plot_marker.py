@@ -2,12 +2,13 @@
 Visualization of the markers between two models.
 This helps in writting your own marker files.
 """
-
+import sys
 import numpy as np
 from plotly.graph_objs import Figure
 from plotly.subplots import make_subplots
 
-from config import config_default, ConfigFile
+sys.path.append("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/visualization")
+from visualization.config import config_default, ConfigFile
 from meshlib import Mesh
 from render.plot import BrowserVisualizer
 
@@ -164,7 +165,7 @@ def plot_marker(source: Mesh, target: Mesh, markers: np.ndarray) -> Figure:
 
 if __name__ == "__main__":
     # cfg = ConfigFile.load(ConfigFile.Paths.highpoly.horse_camel)
-    cfg = ConfigFile.load(ConfigFile.Paths.lowpoly.catdog)
+    cfg = ConfigFile.load("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/fixed_map.yml")
     source = Mesh.load(cfg.source.reference)
     target = Mesh.load(cfg.target.reference)
     markers = cfg.markers

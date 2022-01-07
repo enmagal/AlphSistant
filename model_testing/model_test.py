@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-from tensorflow import keras
+import torch
 
 import phoneme_detection as phde
 
@@ -14,26 +14,28 @@ def input_creation(phoneme_dataframe):
     X = []
     for i in range(len(df_frame)):
         X.append(list(df_frame.loc[i, ['a1', 'o1', 'c1', 'g1', 'l1', 'b1', 'f1', 't1', 'j1', 'u1', 'q1', 'a2', 'o2', 'c2', 'g2', 'l2', 'b2', 'f2', 't2', 'j2', 'u2', 'q2','a3', 'o3', 'c3', 'g3', 'l3', 'b3', 'f3', 't3', 'j3', 'u3', 'q3']]))
-    
+    X = torch.tensor(X).float()
+    print("X : ", X)
+    print("X shape : ", X.shape)
     return(X)
 
 def output_extraction(y, save_path):
+    y = y.detach().numpy()
     output = []
+    basis = np.loadtxt('C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/shape_keys_v0/Basis.txt')
+    jaw_open = np.loadtxt('C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/shape_keys_v0/jaw_open.txt')
+    left_eye_closed = np.loadtxt('C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/shape_keys_v0/left_eye_closed.txt')
+    mouth_open = np.loadtxt('C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/shape_keys_v0/mouth_open.txt')
+    right_eye_closed = np.loadtxt('C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/shape_keys_v0/right_eye_closed.txt')
+    smile_left = np.loadtxt('C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/shape_keys_v0/smile_left.txt')
+    smile_right = np.loadtxt('C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/shape_keys_v0/smile_right.txt')
+    smile = np.loadtxt('C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/shape_keys_v0/smile.txt')
+
+    
+
     for i in range(len(y)):
-        newlist = []
-        for v in range(0, len(y[i]), 3):
-            sublist = []
-            for z in range(3):
-                sublist.append(y[i][v+z])
-            newlist.append(sublist)
-        output.append(newlist)
-    for i in range(len(output)):
-        with open(save_path + "/face_" + '{:03}'.format(i) + ".txt", 'w') as f:
-            for y in range(len(output[i])):
-                f.write('{:.18e}'.format(output[i][y][0]) + ' ')
-                f.write('{:.18e}'.format(output[i][y][1]) + ' ')
-                f.write('{:.18e}'.format(output[i][y][2]))
-                f.write('\n')
+        output = y[i][0] * basis + y[i][1] * jaw_open + y[i][2] * left_eye_closed + y[i][3] * mouth_open + y[i][4] * right_eye_closed + y[i][5] * smile_left + y[i][6] * smile_right + y[i][7] * smile
+        np.savetxt(save_path + "/face_" + '{:03}'.format(i) + ".txt", output)
     print("Extraction DONE")
 
 if __name__ == "__main__": 

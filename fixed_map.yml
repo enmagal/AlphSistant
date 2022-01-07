@@ -1,46 +1,28 @@
 source:
-  reference: face.obj
+  reference: C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_000.obj
   poses:
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_001.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_002.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_003.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_004.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_005.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_006.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_007.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_008.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_009.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_010.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_011.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_012.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_013.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_014.txt
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_015.txt
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_001.obj
 
 
 target:
-  reference: suzanne.obj
+  reference: C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/suzanne.obj
   # Target poses just for reference
   poses:
 
 markers:
-  - "262:235"
-  - "267:247"
-  - "254:243"
-  - "258:229"
-  - "243:236"
-  - "241:248"
-  - "237:244"
-  - "248:230"
-  - "332:164"
-  - "355:35"
-  - "335:159"
-  - "324:158"
-  - "408:97"
-  - "382:96"
-  - "373:95"
-  - "403:102"
-  - "3:39"
-  - "42:56"
-  - "134:132"
-  - "124:131"
+  - "262:247"
+  - "258:233"
+  - "251:243"
+  - "255:229"
+  - "233:240"
+  - "244:230"
+  - "239:234"
+  - "248:248"
+  - "318:164"
+  - "353:35"
+  - "437:187"
+  - "432:182"
+  - "384:37"
+  - "105:39"
+  - "284:132"
+  - "298:131"

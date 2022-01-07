@@ -70,17 +70,15 @@ class Mesh:
         :return:
         """
         faces = np.loadtxt(face_file)
-        vertices = np.loadtxt(vert_file).astype(int)
+        vertices = np.loadtxt(vert_file)
         return cls(vertices, faces)
 
     @classmethod
-    def load(cls, vert_file: str, face_file: str, file: str, **kwargs) -> "Mesh":
+    def load(cls, file: str, **kwargs) -> "Mesh":
         if file.endswith(".obj") or file.endswith(".pose"):
             return cls.load_obj(file, **kwargs)
         elif file.endswith(".npz"):
             return cls.load_npz(file, **kwargs)
-        elif file.endswith(".txt"):
-            return cls.load_txt(vert_file, face_file, **kwargs)
         raise ValueError("Invalid file format")
 
     def get_centroids(self) -> np.ndarray:

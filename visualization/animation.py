@@ -24,10 +24,10 @@ def animate(vert_path, face_path, cfg: ConfigFile, identity=False):
     if identity:
         corr_markers = np.ascontiguousarray(np.array((corr_markers[:, 0], corr_markers[:, 0]), dtype=np.int).T)
 
-    original_source = Mesh.load_obj(cfg.source.reference)
-    original_target = Mesh.load_obj(cfg.target.reference)
+    original_source = Mesh.load(cfg.source.reference)
+    original_target = Mesh.load(cfg.target.reference)
     if identity:
-        original_target = Mesh.load_obj(cfg.source.reference)
+        original_target = Mesh.load(cfg.source.reference)
 
     mapping = get_correspondence(original_source, original_target, corr_markers)
     transf = Transformation(original_source, original_target, mapping, smoothness=1)

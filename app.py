@@ -4,7 +4,7 @@ import time
 import sys
 import numpy as np
 import os
-from tensorflow import keras
+import torch
 
 
 sys.path.append("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/visualization")
@@ -39,7 +39,7 @@ if uploaded_file is not None:
         with st.spinner('Wait for it...'):
             time.sleep(5)
             model = torch.load('C:/Users/Enzo.Magal/Documents/Enzo2021/models/sk_model.pth')
-            y = model.predict(X)
+            y = model(X)
 
         st.success("Prediction Computed")
 

@@ -38,7 +38,7 @@ class ModelConfig:
 
     def load_poses(self) -> Iterator[meshlib.Mesh]:
         for p in self.poses:
-            yield meshlib.Mesh.load_txt(p, "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/alphsistant_face_tris.txt")
+            yield meshlib.Mesh.load(p)
 
 
 class ConfigFile:
