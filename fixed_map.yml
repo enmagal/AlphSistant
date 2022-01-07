@@ -1,7 +1,7 @@
 source:
   reference: C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_000.obj
   poses:
-    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_001.obj
+    - C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction/face_000.obj
 
 
 target:

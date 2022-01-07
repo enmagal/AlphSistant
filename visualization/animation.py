@@ -146,7 +146,9 @@ def make_animation(transf: Transformation, poses: Sequence[Mesh], mesh_list):
     return fig  
 
 if __name__ == "__main__":
-    # cfg = ConfigFile.load(ConfigFile.Paths.highpoly.horse_camel)
-    path = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/visualization/3Dmodels/test/source_obj"
-    # cfg = ConfigFile.load(ConfigFile.Paths.highpoly.cat_lion)
-    animate(path)
+    vertice_file_path = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/prediction"
+    face_file_path = "C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/alphsistant_face_tris.txt"
+
+    cfg = ConfigFile.load("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/fixed_map.yml")
+    #cfg = ConfigFile.load("C:/Users/Enzo.Magal/Documents/Enzo2021/alphsistant_code/deformation_external/models/lowpoly/markers-cat-voxel.yml")
+    animate(vert_path, face_path, cfg)

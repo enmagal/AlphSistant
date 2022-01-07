@@ -410,7 +410,7 @@ def compute_correspondence(source_org: meshlib.Mesh, target_org: meshlib.Mesh, m
         # Calculate inverse markers for source
         assert A.shape[1] == len(vertices) - len(markers)
         assert A.shape[0] == b.shape[0]
-
+        print("A : ", A)
         LU = sparse_linalg.splu((A.T @ A).tocsc())
         x = LU.solve(A.T @ b)
 

@@ -22,7 +22,7 @@ if __name__ == "__main__":
     print("Input created")
 
     model = torch.load('C:/Users/Enzo.Magal/Documents/Enzo2021/models/sk_model.pth')
-    print("Model structure: ", model, "\n\n")
+    print("Model structure: ", model, "/n\n")
     y = model(X)
     print("Output computed")
 
@@ -53,6 +53,6 @@ if __name__ == "__main__":
                 f_file.close()
             obj_file.close()
 
-    cfg = ConfigFile.load("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/fixed_map.yml")
+    cfg = ConfigFile.load("C:/Users/Enzo.Magal/Documents/Enzo2021/AlphSistant/suzanne_test/markers_test.yml")
     #cfg = ConfigFile.load("C:/Users/Enzo.Magal/Documents/Enzo2021/alphsistant_code/deformation_external/models/lowpoly/markers-cat-voxel.yml")
     animate(vert_path, face_path, cfg)
